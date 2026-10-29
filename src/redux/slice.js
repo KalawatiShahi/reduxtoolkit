@@ -1,5 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+
+const initialState = {
+    value: 0
+}
+
 const addToCart = createSlice({
     name: 'cart',
     initialState,
@@ -8,7 +13,9 @@ const addToCart = createSlice({
             state.value += 1;
         },
         removeItem:(state)=>{
-            state.value -=1;
+            if(state.value > 0){
+                state.value -= 1;
+            }
         },
         clearAllItems:(state)=>{
             state.value = 0;
